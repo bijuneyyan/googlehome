@@ -32,7 +32,7 @@ app.post('/', function (req, res) {
   function getCompany (assistant) {
   
     
-   let company = assistant.getArgument(companyArgument);
+  /* let company = assistant.getArgument(companyArgument);
 
   fetch(`http://markets.ft.com/research/webservices/securities/v1/search?query=${company}&source=${marketsDataKey}`).then((data) => {
     if (data.ok) {
@@ -48,9 +48,10 @@ app.post('/', function (req, res) {
     });
     }).catch((error) => {
     console.log(error)
-  });
+  }); */ //commented by biju
 
-//console.log('hello');
+    app.tell('poda patti'); //added by biju
+    console.log('hello'); // added by biju
 
   }
 
