@@ -50,7 +50,7 @@ app.post('/', function (req, res) {
     console.log(error)
   }); */ //biju removed this
 
-console.log("hello")
+console.log('hello')
 
   }
 
