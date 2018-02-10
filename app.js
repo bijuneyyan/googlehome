@@ -15,7 +15,7 @@ const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
 
-app.post('/', function (req, res) {
+app.post('/webhook', function (req, res) {
   const thisSessionID = req.body.sessionId;
   if (sessionIds[thisSessionID] === undefined ){
       sessionIds[thisSessionID] = [thisSessionID];
