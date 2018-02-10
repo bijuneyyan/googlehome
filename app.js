@@ -8,7 +8,7 @@ let express = require('express');
 let bodyParser = require('body-parser');
 
 let app = express();
-app.use(bodyParser.json({type: 'application/json'}));
+app.use(bodyParser.json());
 
 const getCompanyIntent = 'get_Company';
 const companyArgument = 'company';
@@ -30,7 +30,7 @@ app.post('/webhook', function (req, res) {
   console.log('* Received action -- %s', req.body.result.action)
 
   // parameters are stored in req.body.result.parameters
-  var webhookReply = 'Hello ' + userName + '! Welcome from the webhook.'
+  var webhookReply = 'Hello from the webhook.'
 
   // the most basic response
   res.status(200).json({
