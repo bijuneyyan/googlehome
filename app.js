@@ -56,8 +56,8 @@ app.post('/webhook', function (req, res) {
 */
   console.log('>>>> BODY >>>> \n\n', JSON.stringify(req.body), '\n\n');
   console.log ('req.body=', JSON.stringify(req.body));
-  console.log ('EXTRACTED_SessionId=' , req.body.sessionId);
-  console.log ('EXTRACTED_conversation_id=' , req.body.originalRequest.data.conversation.conversation_id);
+ // console.log ('EXTRACTED_SessionId=' , req.body.sessionId);
+ // console.log ('EXTRACTED_conversation_id=' , req.body.originalRequest.data.conversation.conversation_id);
   const assistant = new Assistant({request: req, response: res});
   
   function getCompany (assistant) {
@@ -81,17 +81,17 @@ app.post('/webhook', function (req, res) {
     console.log(error)
   }); */ //commented by biju
 
-assistant.ask('hiyya');
+assistant.tell('hiyya');
     
-// /*  
+/*  
  var webhookReply = 'Hello asdf.'
 
    res.status(200).json({
     source: 'webhook',
     speech: webhookReply,
     displayText: 'webhookReply'
-}) 
-   // */ //added by biju
+}) //added by biju
+*/
 
   }
 
