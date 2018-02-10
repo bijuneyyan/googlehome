@@ -19,6 +19,29 @@ app.get('/webhook', function (req, res) {
   res.send('Use the /webhook endpoint.')
 })
 
+
+app.post('/webhook', function (req, res) {
+  // we expect to receive JSON data from api.ai here.
+  // the payload is stored on req.body
+  console.log(req.body)
+
+
+  // the value of Action from api.ai is stored in req.body.result.action
+  console.log('* Received action -- %s', req.body.result.action)
+
+  // parameters are stored in req.body.result.parameters
+  var webhookReply = 'Hello ' + userName + '! Welcome from the webhook.'
+
+  // the most basic response
+  res.status(200).json({
+    source: 'webhook',
+    speech: webhookReply,
+    displayText: webhookReply
+  })
+});
+
+
+/*
 app.post('/webhook', function (req, res) {
   const thisSessionID = req.body.sessionId;
   if (sessionIds[thisSessionID] === undefined ){
@@ -74,6 +97,8 @@ assistant.ask('hiyya');
 
   assistant.handleRequest(actionMap);
 });
+
+*/
 
 if (module === require.main) {
   let server = app.listen(process.env.PORT || 8080, function () {
