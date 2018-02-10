@@ -11,6 +11,9 @@ let app = express();
 app.use(bodyParser.json());
 
 const getCompanyIntent = 'getCompany';
+
+const huyyaActionIntent = 'huyya_Action';
+
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -95,8 +98,20 @@ assistant.tell('hiyya');
 
   }
 
+
+  function huyyaAction (assistant) {
+  
+
+assistant.tell('huyya');
+    
+
+
+  }
+
+
   let actionMap = new Map();
   actionMap.set(getCompanyIntent, getCompany);
+  actionMap.set(huyyaActionIntent, huyyaAction);
 
   assistant.handleRequest(actionMap);
 });
