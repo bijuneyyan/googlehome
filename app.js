@@ -10,7 +10,7 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
-const getCompanyIntent = 'getCompany';
+const getCompanyIntent = 'get_Company';
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -57,14 +57,15 @@ app.post('/webhook', function (req, res) {
 
 assistant.ask('hiyya');
     
-/*    
+// /*  
  var webhookReply = 'Hello asdf.'
 
    res.status(200).json({
     source: 'webhook',
     speech: webhookReply,
     displayText: 'webhookReply'
-}) */ //added by biju
+}) 
+   // */ //added by biju
 
   }
 
