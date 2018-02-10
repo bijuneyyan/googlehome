@@ -54,11 +54,15 @@ app.post('/webhook', function (req, res) {
     console.log(error)
   }); */ //commented by biju
 
+ var webhookReply = 'Hello asdf.'
+ 
+ assistant.ask('hiyya');
+/*    
    res.status(200).json({
     source: 'webhook',
-    speech: 'webhookReply',
+    speech: webhookReply,
     displayText: 'webhookReply'
-}) //added by biju
+}) */ //added by biju
 
   }
 
