@@ -36,9 +36,9 @@ app.post('/webhook', function (req, res) {
   function getCompany (assistant) {
   
     
-  /* let company = assistant.getArgument(companyArgument);
+  let company = assistant.getArgument(companyArgument);
 
-  fetch(`http://markets.ft.com/research/webservices/securities/v1/search?query=${company}&source=${marketsDataKey}`).then((data) => {
+  /* fetch(`http://markets.ft.com/research/webservices/securities/v1/search?query=${company}&source=${marketsDataKey}`).then((data) => {
     if (data.ok) {
         return data.json();
       }
@@ -54,10 +54,11 @@ app.post('/webhook', function (req, res) {
     console.log(error)
   }); */ //commented by biju
 
- var webhookReply = 'Hello asdf.'
- 
- assistant.ask('hiyya');
+assistant.ask('hiyya');
+    
 /*    
+ var webhookReply = 'Hello asdf.'
+
    res.status(200).json({
     source: 'webhook',
     speech: webhookReply,
