@@ -10,7 +10,7 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json());
 
-const getCompanyIntent = 'get_Company';
+const getCompanyIntent = 'getCompany';
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -100,7 +100,6 @@ assistant.ask('hiyya');
   assistant.handleRequest(actionMap);
 });
 
-*/
 
 if (module === require.main) {
   let server = app.listen(process.env.PORT || 8080, function () {
