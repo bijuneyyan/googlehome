@@ -50,8 +50,11 @@ app.post('/', function (req, res) {
     console.log(error)
   }); */ //commented by biju
 
-    app.tell('poda patti'); //added by biju
-    console.log('hello'); // added by biju
+   res.status(200).json({
+    source: 'webhook',
+    speech: webhookReply,
+    displayText: webhookReply
+}) //added by biju
 
   }
 
