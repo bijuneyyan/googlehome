@@ -33,6 +33,7 @@ app.post('/webhook', function (req, res) {
   console.log ('EXTRACTED_SessionId=' , req.body.sessionId);
   console.log ('EXTRACTED_conversation_id=' , req.body.originalRequest.data.conversation.conversation_id);
   const assistant = new Assistant({request: req, response: res});
+  
   function getCompany (assistant) {
   
     
