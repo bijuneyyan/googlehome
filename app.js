@@ -15,6 +15,7 @@ const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
 
+/*
 app.get('/webhook', function (req, res) {
   res.send('Use the /webhook endpoint.')
 })
@@ -40,17 +41,18 @@ app.post('/webhook', function (req, res) {
   })
 });
 
+*/
 
-/*
+
 app.post('/webhook', function (req, res) {
-  const thisSessionID = req.body.sessionId;
+  /*const thisSessionID = req.body.sessionId;
   if (sessionIds[thisSessionID] === undefined ){
       sessionIds[thisSessionID] = [thisSessionID];
   } else {
     sessionIds[thisSessionID].push(thisSessionID);
   }
   console.log (sessionIds[thisSessionID], 'Number of calls:', sessionIds[thisSessionID].length);
-
+*/
   console.log('>>>> BODY >>>> \n\n', JSON.stringify(req.body), '\n\n');
   console.log ('req.body=', JSON.stringify(req.body));
   console.log ('EXTRACTED_SessionId=' , req.body.sessionId);
@@ -60,7 +62,7 @@ app.post('/webhook', function (req, res) {
   function getCompany (assistant) {
   
     
-  let company = assistant.getArgument(companyArgument);
+  //let company = assistant.getArgument(companyArgument);
 
   /* fetch(`http://markets.ft.com/research/webservices/securities/v1/search?query=${company}&source=${marketsDataKey}`).then((data) => {
     if (data.ok) {
