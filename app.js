@@ -113,7 +113,33 @@ assistant.tell('huyya');
     function reminderAction (assistant) {
   
 
-assistant.tell('reminder set');
+var http = require("http");
+var options = {
+  hostname: 'maker.ifttt.com',
+  port: 80,
+  path: '/trigger/dothis/with/key/bX4ry_sAipRiF3FanH3K0Z',
+  method: 'POST',
+  headers: {
+      'Content-Type': 'application/json',
+  }
+};
+var post_req = http.request(options, function(post_res) {
+  console.log('Status: ' + post_res.statusCode);
+  console.log('Headers: ' + JSON.stringify(post_res.headers));
+  post_res.setEncoding('utf8');
+  post_res.on('data', function (post_body) {
+    console.log('Body: ' + post_body );
+  });
+});
+post_req.on('error', function(e) {
+  console.log('problem with request: ' + e.message);
+});
+
+// write data to request body
+post_req.write('{"value1":"new test here"}');
+//post_req.write(speech);
+//post_req.write('"}');
+post_req.end();
     
 
 
