@@ -15,11 +15,12 @@ const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
 
-/*
+
 app.get('/webhook', function (req, res) {
   res.send('Use the /webhook endpoint.')
 })
 
+/*
 
 app.post('/webhook', function (req, res) {
   // we expect to receive JSON data from api.ai here.
