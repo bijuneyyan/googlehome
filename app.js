@@ -52,8 +52,8 @@ app.post('/', function (req, res) {
 
    res.status(200).json({
     source: 'webhook',
-    speech: webhookReply,
-    displayText: webhookReply
+    speech: 'webhookReply',
+    displayText: 'webhookReply'
 }) //added by biju
 
   }
