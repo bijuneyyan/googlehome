@@ -14,6 +14,8 @@ const getCompanyIntent = 'getCompany';
 
 const huyyaActionIntent = 'huyya_Action';
 
+const reminderActionIntent = 'reminder_Action';
+
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -108,10 +110,20 @@ assistant.tell('huyya');
 
   }
 
+    function reminderAction (assistant) {
+  
+
+assistant.tell('reminder set');
+    
+
+
+  }
+
 
   let actionMap = new Map();
   actionMap.set(getCompanyIntent, getCompany);
   actionMap.set(huyyaActionIntent, huyyaAction);
+  actionMap.set(reminderActionIntent, reminderAction);
 
   assistant.handleRequest(actionMap);
 });
