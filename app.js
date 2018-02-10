@@ -113,6 +113,10 @@ assistant.tell('huyya');
     function reminderAction (assistant) {
   
 
+var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+
+  
+
 var http = require("http");
 var options = {
   hostname: 'maker.ifttt.com',
@@ -140,6 +144,15 @@ post_req.write('{"value1":"new test here"}');
 //post_req.write(speech);
 //post_req.write('"}');
 post_req.end();
+
+
+
+return res.json({
+        speech: "Okay, I will try and remind biju to " + speech + ". Anything else?",
+        displayText: "Okay, I will remind biju to " + speech + ". Anything else?", //Biju added +speech part
+        contextOut: [{"name":"cBye", "lifespan":"1"}], //Biju added
+        source: 'webhook-echo-sample'
+}); 
     
 
 
