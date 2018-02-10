@@ -10,105 +10,56 @@ let bodyParser = require('body-parser');
 let app = express();
 app.use(bodyParser.json({type: 'application/json'}));
 
-// const getCompanyIntent = 'getCompany';
+const getCompanyIntent = 'getCompany';
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
-function getCompany (assistant) {
-
-  let company = assistant.getArgument(companyArgument);
-
-  new Promise (resolve => {
-    if (marketsSecuritiesCache[company] !== undefined){
-      console.log('Debug: marketsSecuritiesCache hit, company=', company);
-      resolve(marketsSecuritiesCache[company]);
-    } else {
-      console.log('Debug: marketsSecuritiesCache miss, company=', company);
-      fetch(`http://markets.ft.com/research/webservices/securities/v1/search?query=${company}&source=${marketsDataKey}`)
-      .then((data) => {
-        if (data.ok) {
-          console.log('Debug: securities data.ok');
-          let json = data.json();
-          marketsSecuritiesCache[company] = json;
-          resolve(json);
-        }
-      })
-    }
-  })
-  .then(json => {
-    let symbol = json.data.searchResults[0].symbol;
-    new Promise (resolve =>{
-      if (marketsProfileCache[symbol] !== undefined){
-        console.log('Debug: marketsProfileCache hit, symbol=', symbol);
-        resolve(marketsProfileCache[symbol]);
-      } else {
-        console.log('Debug: marketsProfileCache miss, symbol=', symbol);
-        fetch(`http://markets.ft.com/research/webservices/companies/v1/profile?symbols=${symbol}&source=${marketsDataKey}`)
-        .then((data) => {
-          if (data.ok) {
-            console.log('Debug: profile data.ok');
-            let json = data.json();
-            marketsProfileCache[symbol] = json;
-            resolve(json);
-          }
-        })
-      }
-    })
-    .then((json) => {
-      let description = json.data.items[0].profile.description;
-      console.log('Debug: responding to assistant with description = ', description);
-      assistant.ask(description);
-    });
-  }).catch((error) => {
-    console.log(error)
-  })
-  ;
-}
-
-function moreInfo(assistant){
-    console.log('<<< MORE INFO >>>');
-    const thisSessionID = assistant['request_'].body.sessionId;
-    console.log('1 >>>',thisSessionID);
-    if (sessionIds[thisSessionID].length === 1 ){
-      console.log('2 >>>', sessionIds[thisSessionID]);
-      assistant.ask(`Sorry, you have to ask for a company first.`);
-    } else {
-      /*const lastRequest = sessionIds[thisSessionID][ sessionIds[thisSessionID].length - 1 ];
-
-      if (lastRequest.result.contexts[0].metadata.intentName === "getCompany"){
-        assistant.ask(`Sorry, I can't tell you anymore about ${lastRequest.result.parameters.company}`);
-      } else {
-        assistant.ask ("Sorry, I don't know what to do with that.");
-      }*/
-      console.log('3 >>>', sessionIds[thisSessionID]);
-      assistant.ask('Ah, so you want me to tell you more?');
-
-    }
-
-}
-
-let actionMap = new Map();
-actionMap.set('getCompany', getCompany);
-actionMap.set('more', moreInfo);
-
 const sessionIds = {};
-const marketsSecuritiesCache = {};
-const marketsProfileCache = {};
 
 app.post('/', function (req, res) {
   const thisSessionID = req.body.sessionId;
   if (sessionIds[thisSessionID] === undefined ){
-      sessionIds[thisSessionID] = [req.body];
+      sessionIds[thisSessionID] = [thisSessionID];
   } else {
-    sessionIds[thisSessionID].push(req.body);
+    sessionIds[thisSessionID].push(thisSessionID);
   }
   console.log (sessionIds[thisSessionID], 'Number of calls:', sessionIds[thisSessionID].length);
 
   console.log('>>>> BODY >>>> \n\n', JSON.stringify(req.body), '\n\n');
+  console.log ('req.body=', JSON.stringify(req.body));
   console.log ('EXTRACTED_SessionId=' , req.body.sessionId);
   console.log ('EXTRACTED_conversation_id=' , req.body.originalRequest.data.conversation.conversation_id);
-	const assistant = new Assistant({request: req, response: res});
+  const assistant = new Assistant({request: req, response: res});
+  function getCompany (assistant) {
+  
+    
+  /* let company = assistant.getArgument(companyArgument);
 
-  // actionMap.set(getCompanyIntent, getCompany);
+  fetch(`http://markets.ft.com/research/webservices/securities/v1/search?query=${company}&source=${marketsDataKey}`).then((data) => {
+    if (data.ok) {
+        return data.json();
+      }
+    }).then((json) => {
+    fetch(`http://markets.ft.com/research/webservices/companies/v1/profile?symbols=${json.data.searchResults[0].symbol}&source=${marketsDataKey}`).then((data) => {
+      if (data.ok) {
+          return data.json();
+        }
+      }).then((json) => {
+      assistant.ask(json.data.items[0].profile.description);
+    });
+    }).catch((error) => {
+    console.log(error)
+  }); */ //commented by biju
+
+   res.status(200).json({
+    source: 'webhook',
+    speech: webhookReply,
+    displayText: webhookReply
+}) //added by biju
+
+  }
+
+  let actionMap = new Map();
+  actionMap.set(getCompanyIntent, getCompany);
 
   assistant.handleRequest(actionMap);
 });
