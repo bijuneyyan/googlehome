@@ -166,14 +166,14 @@ return res.json({
 
 //assistant.tell('you are rich');
 
-if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
-    return app.ask(app.buildRichResponse()
+if (assistant.hasSurfaceCapability(assistant.SurfaceCapabilities.SCREEN_OUTPUT)) {
+    return assistant.ask(assistant.buildRichResponse()
       .addSimpleResponse('The chord can be played like this. ')
-      .addBasicCard(app.buildBasicCard(buildString(chord))
+      .addBasicCard(assistant.buildBasicCard(buildString(chord))
         .setTitle('The chord')
         .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/384px-PM5544_with_non-PAL_signals.png', 'The  chord')));
     } else {
-    return app.ask('what?')
+    return assistant.ask('what?')
 }
     
 
