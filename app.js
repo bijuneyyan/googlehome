@@ -70,7 +70,7 @@ app.post('/webhook', function (req, res) {
  // console.log ('EXTRACTED_conversation_id=' , req.body.originalRequest.data.conversation.conversation_id);
   const assistant = new Assistant({request: req, response: res});
 
-  const sdk = new ActionsSdkApp({request: request, response: response}); //biju added for rich response
+  const sdk = new ActionsSdkApp({request: req, response: res}); //biju added for rich response
   
   function getCompany (assistant) {
   
