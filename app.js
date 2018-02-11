@@ -16,6 +16,8 @@ const huyyaActionIntent = 'huyya_Action';
 
 const reminderActionIntent = 'reminder_Action';
 
+const getRichActionIntent = 'getRich_Action';
+
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -159,10 +161,25 @@ return res.json({
   }
 
 
+ function getRichAction (assistant) {
+  
+
+assistant.tell('you are rich');
+    
+
+
+  }
+
+
+//action map begins below
+
+
+
   let actionMap = new Map();
   actionMap.set(getCompanyIntent, getCompany);
   actionMap.set(huyyaActionIntent, huyyaAction);
   actionMap.set(reminderActionIntent, reminderAction);
+  actionMap.set(getRichActionIntent, getRichAction);
 
   assistant.handleRequest(actionMap);
 });
