@@ -23,6 +23,8 @@ const getRichActionIntent = 'getRich_Action';
 
 const cardsActionIntent = 'cards_Action';
 
+const listActionIntent = 'list_Action';
+
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -240,6 +242,41 @@ sdk.askWithCarousel('Alright! Here are a few things you can learn. Which sounds 
   }
 
 
+    function listAction (sdk) {
+
+sdk.askWithList('Alright! Here are a few things you can learn. Which sounds interesting?',
+    // Build a list
+    sdk.buildList('Things to learn about')
+      // Add the first item to the list
+      .addItems(sdk.buildOptionItem('MATH_AND_PRIME',
+        ['math', 'math and prime', 'prime numbers', 'prime'])
+        .setTitle('Math & prime numbers')
+        .setDescription('42 is an abundant number because the sum of its ' +
+        'proper divisors 54 is greater…')
+        .setImage('http://example.com/math_and_prime.jpg', 'Math & prime numbers'))
+      // Add the second item to the list
+      .addItems(sdk.buildOptionItem('EGYPT',
+        ['religion', 'egpyt', 'ancient egyptian'])
+        .setTitle('Ancient Egyptian religion')
+        .setDescription('42 gods who ruled on the fate of the dead in the ' +
+        'afterworld. Throughout the under…')
+        .setImage('http://example.com/egypt', 'Egypt')
+      )
+      // Add third item to the list
+      .addItems(sdk.buildOptionItem('RECIPES',
+        ['recipes', 'recipe', '42 recipes'])
+        .setTitle('42 recipes with 42 ingredients')
+        .setDescription('Here\'s a beautifully simple recipe that\'s full ' +
+        'of flavor! All you need is some ginger and…')
+        .setImage('http://example.com/recipe', 'Recipe')
+      )
+  );
+
+
+
+  }
+
+
 //action map begins below
 
 
@@ -250,6 +287,7 @@ sdk.askWithCarousel('Alright! Here are a few things you can learn. Which sounds 
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
   actionMap.set(cardsActionIntent, cardsAction);
+  actionMap.set(listActionIntent, listAction);
 
   assistant.handleRequest(actionMap);
 });
