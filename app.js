@@ -169,20 +169,8 @@ return res.json({
  function getRichAction (sdk) {
   
 
-//assistant.tell('you are rich');
-
-/*if (sdk.hasSurfaceCapability(sdk.SurfaceCapabilities.SCREEN_OUTPUT)) {
-    return sdk.ask(sdk.buildRichResponse()
-      .addSimpleResponse('The chord can be played like this. ')
-      .addBasicCard(sdk.buildBasicCard(buildString(chord))
-        .setTitle('The chord')
-        .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/384px-PM5544_with_non-PAL_signals.png', 'The  chord')));
-    } else {
-    return sdk.ask('what?')
-}*/
-
-//const sdk = new ActionsSdkApp({request, response});
-  sdk.ask(sdk.buildRichResponse()
+//const sdk = new ActionsSdkApp({request, response}); // not needed since already declared above
+/*  sdk.ask(sdk.buildRichResponse()
     .addSimpleResponse({speech: 'Howdy! I can tell you fun facts about ' +
         'almost any number like 0, 42, or 100. What number do you have ' +
         'in mind?',
@@ -190,6 +178,22 @@ return res.json({
         'number. What number do you have in mind?'})
     .addSuggestions(['0', '42', '100', 'Never mind'])
     .addSuggestionLink('Suggestion Link', 'https://assistant.google.com/')
+  );*/
+
+
+sdk.ask(sdk.buildRichResponse()
+    // Create a basic card and add it to the rich response
+    .addSimpleResponse('Math and prime numbers it is!')
+    .addBasicCard(sdk.buildBasicCard('42 is an even composite number. It' +
+      'is composed of three distinct prime numbers multiplied together. It' +
+      'has a total of eight divisors. 42 is an abundant number, because the' +
+      'sum of its proper divisors 54 is greater than itself. To count from' +
+      '1 to 42 would take you about twenty-one…')
+      .setTitle('Math & prime numbers')
+      .addButton('Read more', 'https://example.google.com/mathandprimes')
+      .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/384px-PM5544_with_non-PAL_signals.png', 'Image alternate text')
+      .setImageDisplay('CROPPED')
+    )
   );
 
     
