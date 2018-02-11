@@ -166,7 +166,7 @@ return res.json({
   }
 
 
- function getRichAction (assistant,sdk) {
+ function getRichAction (sdk) {
   
 
 //assistant.tell('you are rich');
