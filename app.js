@@ -21,6 +21,8 @@ const reminderActionIntent = 'reminder_Action';
 
 const getRichActionIntent = 'getRich_Action';
 
+const cardsActionIntent = 'cards_Action';
+
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -170,6 +172,8 @@ return res.json({
   
 
 //const sdk = new ActionsSdkApp({request, response}); // not needed since already declared above
+
+// block below actually works but commented since it's only convDrivers
 /*  sdk.ask(sdk.buildRichResponse()
     .addSimpleResponse({speech: 'Howdy! I can tell you fun facts about ' +
         'almost any number like 0, 42, or 100. What number do you have ' +
@@ -202,6 +206,13 @@ sdk.ask(sdk.buildRichResponse()
   }
 
 
+  function cardsAction (sdk) {
+
+sdk.tell('hre are your cacrds')
+
+  }
+
+
 //action map begins below
 
 
@@ -211,6 +222,7 @@ sdk.ask(sdk.buildRichResponse()
   actionMap.set(huyyaActionIntent, huyyaAction);
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
+  actionMap.set(cardsActionIntent, cardsAction);
 
   assistant.handleRequest(actionMap);
 });
