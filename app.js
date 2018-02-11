@@ -164,7 +164,17 @@ return res.json({
  function getRichAction (assistant) {
   
 
-assistant.tell('you are rich');
+//assistant.tell('you are rich');
+
+if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
+    return app.ask(app.buildRichResponse()
+      .addSimpleResponse('The ' + input + ' chord can be played like this. ' + strings.general.whatNext)
+      .addBasicCard(app.buildBasicCard(buildString(chord))
+        .setTitle('The ' + input + ' chord')
+        .setImage('https://github.com/hitherejoe/Fret/blob/master/functions/images/' + input + '.png?raw=true', 'The ' + input + ' chord')));
+    } else {
+    return app.ask(buildString(chord) + ". " + strings.general.whatNext)
+}
     
 
 
