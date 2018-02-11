@@ -168,12 +168,12 @@ return res.json({
 
 if (app.hasSurfaceCapability(app.SurfaceCapabilities.SCREEN_OUTPUT)) {
     return app.ask(app.buildRichResponse()
-      .addSimpleResponse('The ' + input + ' chord can be played like this. ' + strings.general.whatNext)
+      .addSimpleResponse('The chord can be played like this. ')
       .addBasicCard(app.buildBasicCard(buildString(chord))
-        .setTitle('The ' + input + ' chord')
-        .setImage('https://github.com/hitherejoe/Fret/blob/master/functions/images/' + input + '.png?raw=true', 'The ' + input + ' chord')));
+        .setTitle('The chord')
+        .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/384px-PM5544_with_non-PAL_signals.png', 'The  chord')));
     } else {
-    return app.ask(buildString(chord) + ". " + strings.general.whatNext)
+    return app.ask('what?')
 }
     
 
