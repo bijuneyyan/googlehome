@@ -7,6 +7,9 @@ let Assistant = require('actions-on-google').ApiAiAssistant;
 let express = require('express');
 let bodyParser = require('body-parser');
 
+let ActionsSdkApp = require('actions-on-google').ActionsSdkApp; //biju added to test rich response
+
+
 let app = express();
 app.use(bodyParser.json());
 
@@ -66,6 +69,8 @@ app.post('/webhook', function (req, res) {
  // console.log ('EXTRACTED_SessionId=' , req.body.sessionId);
  // console.log ('EXTRACTED_conversation_id=' , req.body.originalRequest.data.conversation.conversation_id);
   const assistant = new Assistant({request: req, response: res});
+
+  const sdk = new ActionsSdkApp({request: request, response: response}); //biju added for rich response
   
   function getCompany (assistant) {
   
@@ -166,14 +171,14 @@ return res.json({
 
 //assistant.tell('you are rich');
 
-if (assistant.hasSurfaceCapability(assistant.SurfaceCapabilities.SCREEN_OUTPUT)) {
-    return assistant.ask(assistant.buildRichResponse()
+if (sdk.hasSurfaceCapability(sdk.SurfaceCapabilities.SCREEN_OUTPUT)) {
+    return sdk.ask(assistant.buildRichResponse()
       .addSimpleResponse('The chord can be played like this. ')
-      .addBasicCard(assistant.buildBasicCard(buildString(chord))
+      .addBasicCard(sdk.buildBasicCard(buildString(chord))
         .setTitle('The chord')
         .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/384px-PM5544_with_non-PAL_signals.png', 'The  chord')));
     } else {
-    return assistant.ask('what?')
+    return sdk.ask('what?')
 }
     
 
