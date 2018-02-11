@@ -171,7 +171,7 @@ return res.json({
 
 //assistant.tell('you are rich');
 
-if (sdk.hasSurfaceCapability(sdk.SurfaceCapabilities.SCREEN_OUTPUT)) {
+/*if (sdk.hasSurfaceCapability(sdk.SurfaceCapabilities.SCREEN_OUTPUT)) {
     return sdk.ask(sdk.buildRichResponse()
       .addSimpleResponse('The chord can be played like this. ')
       .addBasicCard(sdk.buildBasicCard(buildString(chord))
@@ -179,7 +179,19 @@ if (sdk.hasSurfaceCapability(sdk.SurfaceCapabilities.SCREEN_OUTPUT)) {
         .setImage('https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/PM5544_with_non-PAL_signals.png/384px-PM5544_with_non-PAL_signals.png', 'The  chord')));
     } else {
     return sdk.ask('what?')
-}
+}*/
+
+//const sdk = new ActionsSdkApp({request, response});
+  sdk.ask(sdk.buildRichResponse()
+    .addSimpleResponse({speech: 'Howdy! I can tell you fun facts about ' +
+        'almost any number like 0, 42, or 100. What number do you have ' +
+        'in mind?',
+      displayText: 'Howdy! I can tell you fun facts about almost any ' +
+        'number. What number do you have in mind?'})
+    .addSuggestions(['0', '42', '100', 'Never mind'])
+    .addSuggestionLink('Suggestion Link', 'https://assistant.google.com/')
+  );
+
     
 
 
