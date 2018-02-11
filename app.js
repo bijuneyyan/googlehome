@@ -166,13 +166,13 @@ return res.json({
   }
 
 
- function getRichAction (assistant) {
+ function getRichAction (assistant,sdk) {
   
 
 //assistant.tell('you are rich');
 
 if (sdk.hasSurfaceCapability(sdk.SurfaceCapabilities.SCREEN_OUTPUT)) {
-    return sdk.ask(assistant.buildRichResponse()
+    return sdk.ask(sdk.buildRichResponse()
       .addSimpleResponse('The chord can be played like this. ')
       .addBasicCard(sdk.buildBasicCard(buildString(chord))
         .setTitle('The chord')
