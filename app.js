@@ -25,7 +25,7 @@ const cardsActionIntent = 'cards_Action';
 
 const listActionIntent = 'list_Action';
 
-const welcomeActionIntent = 'welcoms_Action';
+const welcomeActionIntent = 'welcome_Action';
 
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
