@@ -25,6 +25,8 @@ const cardsActionIntent = 'cards_Action';
 
 const listActionIntent = 'list_Action';
 
+const welcomeActionIntent = 'welcoms_Action';
+
 const companyArgument = 'company';
 const marketsDataKey = process.env.markets;
 const sessionIds = {};
@@ -76,6 +78,22 @@ app.post('/webhook', function (req, res) {
 
   const sdk = new ActionsSdkApp({request: req, response: res}); //biju added for rich response
   
+  
+ function welcomeAction (sdk) {
+  
+
+sdk.ask(sdk.buildRichResponse()
+    .addSimpleResponse({speech: '<speak> <audio src="https://bablashee.000webhostapp.com/blasheep.mp3"></audio>' + 
+      'I am bijus digital assistant. I can set reminders for him on your behalf or answer your basic quesstions about him.'+
+      'What would you like to do?</speak>',
+      displayText: 'I am biju\'s digital assistant. What would you like to do?'})
+    .addSuggestions(['Remind Biju', 'Know more', 'Send a message', 'Never mind'])
+    .addSuggestionLink('Suggestion Link', 'https://www.bijuneyyan.info')
+  );
+
+}
+
+
   function getCompany (assistant) {
   
     
@@ -283,12 +301,14 @@ sdk.askWithList('Alright! Here are a few things you can learn. Which sounds inte
 
 
   let actionMap = new Map();
+  actionMap.set(welcomeActionIntent, welcomeAction);
   actionMap.set(getCompanyIntent, getCompany);
   actionMap.set(huyyaActionIntent, huyyaAction);
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
   actionMap.set(cardsActionIntent, cardsAction);
   actionMap.set(listActionIntent, listAction);
+
 
   assistant.handleRequest(actionMap);
 });
