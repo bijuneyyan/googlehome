@@ -189,8 +189,7 @@ return res.json({
 
 sdk.ask(sdk.buildRichResponse()
     // Create a basic card and add it to the rich response
-    .addSimpleResponse({speech: 'Howdy! I can tell you',
-      displayText: 'Howdy!'})
+    .addSimpleResponse('Howdy!')
     .addBasicCard(sdk.buildBasicCard('42 is an even composite number. It' +
       'is composed of three distinct prime numbers multiplied together. It' +
       'has a total of eight divisors. 42 is an abundant number, because the' +
