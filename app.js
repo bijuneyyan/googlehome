@@ -138,7 +138,26 @@ assistant.tell('huyya');
   function readTweetAction (assistant) {
   
 
-assistant.tell('I read tweets');
+//assistant.tell('I read tweets');
+
+
+var Twit = require('twit');
+
+var T = new Twit({
+    consumer_key:         '9xGcRhGwuJ0Tj2WNpcx2z6T54'
+  , consumer_secret:      'iiklmzCiankgZrei5JwLQwFOYpnAMqD9Li2VTNS1EyRlifXOTG'
+  , access_token:         '19954424-j8LKSDipZv4lqv8VbwnZztzAhVoV8ftfN0SI2UGMK'
+  , access_token_secret:  'VBmEwptCNUo2GQ6LdNgh172pd2wdW1L6pCVxt8Dmj1MsD'
+})
+
+var options = { screen_name: 'bijuneyyan',
+                count: 1 };
+
+T.get('statuses/user_timeline', options , function(err, data) {
+  for (var i = 0; i < data.length ; i++) {
+    assistant.tell(data[i].text);
+  }
+})
     
 
 
