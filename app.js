@@ -17,7 +17,7 @@ const getCompanyIntent = 'getCompany';
 
 const huyyaActionIntent = 'huyya_Action';
 
-const huyyaActionIntent = 'readTweet_Action';
+const readTweetIntent = 'readTweet_Action';
 
 const reminderActionIntent = 'reminder_Action';
 
