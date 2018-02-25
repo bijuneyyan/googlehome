@@ -17,6 +17,8 @@ const getCompanyIntent = 'getCompany';
 
 const huyyaActionIntent = 'huyya_Action';
 
+const huyyaActionIntent = 'readTweet_Action';
+
 const reminderActionIntent = 'reminder_Action';
 
 const getRichActionIntent = 'getRich_Action';
@@ -84,7 +86,7 @@ app.post('/webhook', function (req, res) {
 
 sdk.ask(sdk.buildRichResponse()
     .addSimpleResponse({speech: '<speak> <audio src="https://bablashee.000webhostapp.com/blasheep.mp3"></audio>' + 
-      'I am bijus digital assistant. I can set reminders for him on your behalf or answer your basic questions about him.'+
+      'I am biju\'s digital assistant. I can set reminders for him on your behalf or answer your basic questions about him.'+
       'What would you like to do?</speak>',
       displayText: 'I am biju\'s digital assistant. What would you like to do?'})
     .addSuggestions(['Remind Biju', 'Know more', 'Send message', 'Never mind'])
@@ -138,6 +140,17 @@ assistant.tell('huyya');
 
 
   }
+
+
+function readTweetAction (assistant) {
+  
+
+assistant.tell('I read tweets');
+    
+
+
+  }
+
 
     function reminderAction (assistant) {
   
@@ -304,6 +317,7 @@ sdk.askWithList('Alright! Here are a few things you can learn. Which sounds inte
   actionMap.set(welcomeActionIntent, welcomeAction);
   actionMap.set(getCompanyIntent, getCompany);
   actionMap.set(huyyaActionIntent, huyyaAction);
+  actionMap.set(readTweetIntent, readTweetAction);
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
   actionMap.set(cardsActionIntent, cardsAction);
