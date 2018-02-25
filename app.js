@@ -17,6 +17,8 @@ const getCompanyIntent = 'getCompany';
 
 const huyyaActionIntent = 'huyya_Action';
 
+const readTweetActionIntent = 'readTweet_Action';
+
 const reminderActionIntent = 'reminder_Action';
 
 const getRichActionIntent = 'getRich_Action';
@@ -131,6 +133,17 @@ assistant.tell('huyya');
 
 
   }
+
+
+  function readTweetAction (assistant) {
+  
+
+assistant.tell('I read tweets');
+    
+
+
+  }
+
 
     function reminderAction (assistant) {
   
@@ -297,6 +310,7 @@ sdk.askWithList('Alright! Here are a few things you can learn. Which sounds inte
   actionMap.set(welcomeActionIntent, welcomeAction);
   actionMap.set(getCompanyIntent, getCompany);
   actionMap.set(huyyaActionIntent, huyyaAction);
+  actionMap.set(readTweetActionIntent, readTweetAction);
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
   actionMap.set(cardsActionIntent, cardsAction);
