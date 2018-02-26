@@ -155,7 +155,7 @@ var options = { screen_name: 'bijuneyyan',
 
 T.get('statuses/user_timeline', options , function(err, data) {
   for (var i = 0; i < data.length ; i++) {
-    assistant.tell(data[i].text);
+    assistant.ask('Here\'s the latest tweet from Biju:' data[i].text) 'Anything else?';
   }
 })
     
