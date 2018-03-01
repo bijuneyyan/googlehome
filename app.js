@@ -23,6 +23,8 @@ const reminderActionIntent = 'reminder_Action';
 
 const getRichActionIntent = 'getRich_Action';
 
+const getNameActionIntent = 'getName_Action';
+
 const cardsActionIntent = 'cards_Action';
 
 const listActionIntent = 'list_Action';
@@ -252,6 +254,17 @@ sdk.ask(sdk.buildRichResponse()
   }
 
 
+   function getNameAction (assistant) {
+  
+assistant.ask('sure this works');
+
+
+    
+
+
+  }
+
+
   function cardsAction (sdk) {
 
 sdk.askWithCarousel('Alright! Here are a few things you can learn. Which sounds interesting?',
@@ -332,6 +345,7 @@ sdk.askWithList('Alright! Here are a few things you can learn. Which sounds inte
   actionMap.set(readTweetActionIntent, readTweetAction);
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
+  actionMap.set(getNameActionIntent, getNameAction);
   actionMap.set(cardsActionIntent, cardsAction);
   actionMap.set(listActionIntent, listAction);
 
