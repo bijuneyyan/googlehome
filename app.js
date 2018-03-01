@@ -261,8 +261,8 @@ let permission = assistant.SupportedPermissions.NAME;
 assistant.askForPermission('To address you by name', permission);
 
 
-  if (app.isPermissionGranted()) {
-  let displayName = app.getUserName().displayName;
+  if (assistant.isPermissionGranted()) {
+  let displayName = assistant.getUserName().displayName;
   assistant.ask(displayName);
 }
 
