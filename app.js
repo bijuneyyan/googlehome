@@ -275,8 +275,6 @@ assistant.ask('this too is working');
 }
 
 
-  }
-
 
   function cardsAction (sdk) {
 
