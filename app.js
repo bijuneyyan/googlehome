@@ -273,6 +273,8 @@ function userNameAction (assistant) {
 
 }
 
+}
+
 
 
   function cardsAction (sdk) {
