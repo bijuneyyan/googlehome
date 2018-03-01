@@ -24,6 +24,7 @@ const reminderActionIntent = 'reminder_Action';
 const getRichActionIntent = 'getRich_Action';
 
 const getNameActionIntent = 'getName_Action';
+const userNameActionIntent = 'userName_Action';
 
 const cardsActionIntent = 'cards_Action';
 
@@ -260,9 +261,11 @@ sdk.ask(sdk.buildRichResponse()
 let permission = assistant.SupportedPermissions.NAME;
 assistant.askForPermission('To address you by name', permission);
 
+}
 
-  if (assistant.isPermissionGranted()) {
-  let displayName = assistant.getUserName().displayName;
+function userNameAction (assistant) {
+  if (app.isPermissionGranted()) {
+  let displayName = app.getUserName().displayName;
   assistant.ask(displayName);
 }
 
@@ -351,6 +354,7 @@ sdk.askWithList('Alright! Here are a few things you can learn. Which sounds inte
   actionMap.set(reminderActionIntent, reminderAction);
   actionMap.set(getRichActionIntent, getRichAction);
   actionMap.set(getNameActionIntent, getNameAction);
+  actionMap.set(userNameActionIntent, userNameAction);
   actionMap.set(cardsActionIntent, cardsAction);
   actionMap.set(listActionIntent, listAction);
 
