@@ -256,10 +256,15 @@ sdk.ask(sdk.buildRichResponse()
 
    function getNameAction (assistant) {
   
-assistant.ask('sure this works');
+//assistant.ask('sure this works');
+let permission = assistant.SupportedPermissions.NAME;
+assistant.askForPermission('To address you by name', permission);
 
 
-    
+  if (app.isPermissionGranted()) {
+  let displayName = app.getUserName().displayName;
+  assistant.ask(displayName);
+}
 
 
   }
