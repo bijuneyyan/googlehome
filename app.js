@@ -267,7 +267,7 @@ function userNameAction (assistant) {
  
   if (assistant.isPermissionGranted()) {
   let displayName = assistant.getUserName().displayName;
-  assistant.ask('Your name is' + displayName);
+  assistant.ask('Your name is ' + displayName);
 
 //assistant.ask('this too is working');
 
