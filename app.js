@@ -264,9 +264,14 @@ assistant.askForPermission('To address you by name', permission);
 }
 
 function userNameAction (assistant) {
+ 
+/*
   if (app.isPermissionGranted()) {
   let displayName = app.getUserName().displayName;
   assistant.ask('displayName');
+*/
+assistant.ask('this too is working');
+
 }
 
 
