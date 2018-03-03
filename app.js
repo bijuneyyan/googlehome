@@ -279,7 +279,26 @@ function userNameAction (assistant) {
 
 function activityAction (assistant) {
 
-assistant.ask('yo this too is working');
+//assistant.ask('yo this too is working');
+
+var PublicGoogleCalendar = require('public-google-calendar')
+var publicGoogleCalendar = new PublicGoogleCalendar({ calendarId: 'vcs2c0cpgbh1snae35uk69b904@group.calendar.google.com' });
+  
+publicGoogleCalendar.getEvents(function(err, events) {
+  if (err) { return console.log(err.message); }
+  // events is now array of all calendar events
+
+//var myJSON = JSON.stringify(events);
+
+var summary = events[0].summary;
+var start = events[0].start;
+ 
+assistant.ask('first event is: ' + summary + ' at ' + start);
+
+//console.log(myJSON);
+
+});
+
 
 }
 
