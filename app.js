@@ -26,6 +26,8 @@ const getRichActionIntent = 'getRich_Action';
 const getNameActionIntent = 'getName_Action';
 const userNameActionIntent = 'userName_Action';
 
+const activityActionIntent = 'activity_Action';
+
 const cardsActionIntent = 'cards_Action';
 
 const listActionIntent = 'list_Action';
@@ -275,6 +277,14 @@ function userNameAction (assistant) {
 
 }
 
+function activityAction (assistant) {
+
+assistant.ask('yo this too is working');
+
+}
+
+}
+
 
 
   function cardsAction (sdk) {
@@ -359,6 +369,7 @@ sdk.askWithList('Alright! Here are a few things you can learn. Which sounds inte
   actionMap.set(getRichActionIntent, getRichAction);
   actionMap.set(getNameActionIntent, getNameAction);
   actionMap.set(userNameActionIntent, userNameAction);
+  actionMap.set(activityActionIntent, activityAction);
   actionMap.set(cardsActionIntent, cardsAction);
   actionMap.set(listActionIntent, listAction);
 
