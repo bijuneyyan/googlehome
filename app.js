@@ -291,9 +291,11 @@ publicGoogleCalendar.getEvents(function(err, events) {
 //var myJSON = JSON.stringify(events);
 
 var summary = events[0].summary;
-var start = events[0].start;
+var startFull = events[0].start;
+
+var startSmall = startFull.toString().substr(0, 21);
  
-assistant.ask('first event is: ' + summary + ' at ' + start);
+assistant.ask('first event is: ' + summary + ' at ' + startSmall);
 
 //console.log(myJSON);
 
