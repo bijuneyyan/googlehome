@@ -280,6 +280,51 @@ function userNameAction (assistant) {
 function activityAction (assistant) {
 
 assistant.ask('yo this too is working');
+assistant.ask('second second');
+
+//---------
+
+/*let google = require('googleapis');
+let privatekey = require("./privatekey.json");
+
+// configure a JWT auth client
+let jwtClient = new google.auth.JWT(
+       privatekey.client_email,
+       null,
+       privatekey.private_key,
+       ['https://www.googleapis.com/auth/calendar']);
+//authenticate request
+jwtClient.authorize(function (err, tokens) {
+ if (err) {
+   assistant.tell(err);
+   return;
+ } else {
+   assistant.tell("Successfully connected!");
+ }
+});
+
+//Google Calendar API
+let calendar = google.calendar('v3');
+calendar.events.list({
+   auth: jwtClient,
+   calendarId: 'vcs2c0cpgbh1snae35uk69b904@group.calendar.google.com'
+}, function (err, response) {
+   if (err) {
+       assistant.ask('The API returned an error: ' + err);
+       return;
+   }
+   var events = response.items;
+   if (events.length == 0) {
+       assistant.ask('No events found.');
+   } else {
+       assistant.ask('Event from Google Calendar:');
+       for (let event of response.items) {
+           assistant.ask('Event name: %s, Creator name: %s, Create date: %s', event.summary, event.creator.displayName, event.start.date);
+       }
+   }
+});*/
+
+//---------
 
 /*var PublicGoogleCalendar = require('public-google-calendar')
 var publicGoogleCalendar = new PublicGoogleCalendar({ calendarId: 'vcs2c0cpgbh1snae35uk69b904@group.calendar.google.com' });
