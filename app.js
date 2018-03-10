@@ -294,13 +294,13 @@ let jwtClient = new google.auth.JWT(
        privatekey.private_key,
        ['https://www.googleapis.com/auth/calendar']);
 //authenticate request
-jwtClient.authorize(function (err, tokens) {
+jwtClient.authorize(function (err, tokens) {/*
  if (err) {
    assistant.tell(err);
    return;
  } else {
    assistant.tell("Successfully connected!");
- }
+ }*/
 });
 
 //Google Calendar API
