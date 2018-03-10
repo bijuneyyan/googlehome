@@ -279,13 +279,13 @@ function userNameAction (assistant) {
 
 function activityAction (assistant) {
 
-assistant.ask('yo this too is working');
-assistant.ask('second second');
+//assistant.ask('yo this too is working');
+//assistant.ask('second second');
 
 //---------
 
-/*let google = require('googleapis');
-let privatekey = require("./privatekey.json");
+let google = require('googleapis');
+let privatekey = require("./mypk.json");
 
 // configure a JWT auth client
 let jwtClient = new google.auth.JWT(
@@ -317,12 +317,12 @@ calendar.events.list({
    if (events.length == 0) {
        assistant.ask('No events found.');
    } else {
-       assistant.ask('Event from Google Calendar:');
+       //assistant.ask('Event from Google Calendar:');
        for (let event of response.items) {
            assistant.ask('Event name: %s, Creator name: %s, Create date: %s', event.summary, event.creator.displayName, event.start.date);
        }
    }
-});*/
+});
 
 //---------
 
